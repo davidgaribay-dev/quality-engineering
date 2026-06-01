@@ -30,6 +30,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "anthropic.claude-code",
         "ms-playwright.playwright",
         "esbenp.prettier-vscode",
         "nrwl.angular-console"
