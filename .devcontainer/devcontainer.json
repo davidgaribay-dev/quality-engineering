@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
+  "name": "quality-engineering (Playwright)",
+
+  // Pinned to match the installed @playwright/test version (1.60.0). The Playwright
+  // image bundles the matching browsers + OS deps, so the version MUST track package.json.
+  // -noble = Ubuntu 24.04 LTS base.
+  "image": "mcr.microsoft.com/playwright:v1.60.0-noble",
+
+  // Official Playwright Docker recommendation: --ipc=host avoids Chromium OOM crashes;
+  // --init reaps zombie browser processes (PID 1).
+  "runArgs": ["--ipc=host", "--init"],
+
+  // noVNC desktop (lets you run headed tests, Inspector, codegen in the browser at :6080).
+  // Fully-qualified ID is the canonical form of the docs' "desktop-lite" shorthand.
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "webPort": "6080",
+      "vncPort": "5901",
+      "password": "vscode"
+    }
+  },
+
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": { "label": "noVNC desktop", "onAutoForward": "notify" }
+  },
+
+  // Team consistency: same extensions for everyone. Mirrors .vscode/extensions.json.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "esbenp.prettier-vscode",
+        "nrwl.angular-console"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  // Install workspace deps once the container is built. Browsers already ship in the image.
+  "postCreateCommand": "npm ci"
+}

@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "ms-vscode-remote.remote-containers",
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
     "ms-playwright.playwright"
