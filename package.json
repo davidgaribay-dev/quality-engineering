@@ -4,9 +4,11 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@nx/devkit": "22.7.5",
     "@nx/js": "22.7.5",
+    "@nx/playwright": "^22.7.5",
+    "@playwright/test": "^1.36.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
@@ -17,5 +19,6 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {}
 }
