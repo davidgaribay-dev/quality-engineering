@@ -159,7 +159,7 @@ src/
 
 ## Projects (playwright.config.ts)
 
-`setup` (health-gate) → **`api`** (`tests/api/**`, baseURL=apiURL, no browser) and **`ui-chromium`** (`tests/ui/**`, Desktop Chrome, baseURL=baseURL). Both `dependencies: ['setup']`. **Chromium only** (Firefox/WebKit intentionally out of scope; trivial to add). `webServer[]` boots api+web with `cwd: '../..'` and `reuseExistingServer: !CI`. `testIdAttribute: 'data-testid'`. Reporters: CI → blob+junit+github; local → list+html.
+`setup` (health-gate) → **`api`** (`tests/api/**`, baseURL=apiURL, no browser) and **`ui-chromium`** (`tests/ui/**`, Desktop Chrome, baseURL=baseURL). Both `dependencies: ['setup']`. **Chromium only** (Firefox/WebKit intentionally out of scope; trivial to add). `webServer[]` boots api+web with `cwd: '../..'` and `reuseExistingServer: !CI`. `testIdAttribute: 'data-testid'`. Reporters: CI → blob+junit+github+allure; local → list+html+allure.
 
 ## Conventions — do these
 
@@ -202,6 +202,7 @@ src/
 - **`@smoke` on pull_request → main** (fast gate, chromium).
 - **`@regression` on push → main**, sharded 4× (`--shard=i/4`), each uploads a blob report.
 - **`merge-reports`** downloads the blob shards and merges into one HTML report.
+- **`allure-report`** regenerates the Allure 3 report from all shards, restores/extends `history.jsonl` from the `gh-pages` branch (unbounded run history), and publishes to **GitHub Pages** (https://davidgaribay-dev.github.io/quality-engineering). Allure config: `packages/e2e/allurerc.mjs`; results come from the `allure-playwright` reporter (`allure-results/`, gitignored). Local: `npm run allure:generate && npm run allure:open --workspace=@org/e2e`.
 - Playwright's `webServer` starts api+web in CI (`reuseExistingServer: false`) — there is no separate "start servers" step. `defaults.run.working-directory: packages/e2e`; `npm ci` runs at repo root.
 
 ---
