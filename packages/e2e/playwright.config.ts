@@ -1,64 +1,70 @@
 import { defineConfig, devices } from '@playwright/test';
-import { nxE2EPreset } from '@nx/playwright/preset';
-
-// Point BASE_URL at your app under test. When unset, tests should use
-// absolute URLs (see src/example.spec.ts).
-const baseURL = process.env['BASE_URL'];
+import { env } from './src/support/env.js';
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * Playwright config for the @org/e2e SDET framework.
+ * Docs: https://playwright.dev/docs/test-configuration
+ *
+ * Projects: a `setup` health-gate → then `api` (no browser, hits the API) and
+ * `ui-chromium` (the SPA). Both `webServer` entries boot the stack first, so
+ * `npx playwright test` works from a clean checkout with nothing running.
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src' }),
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  testDir: './src',
+  fullyParallel: true,
+  forbidOnly: env.isCI,
+  retries: env.isCI ? 2 : 0,
+
+  // CI: machine-readable + mergeable; local: fast list + browsable HTML.
+  reporter: env.isCI
+    ? [['blob'], ['junit', { outputFile: 'test-output/junit.xml' }], ['github']]
+    : [['list'], ['html', { open: 'never' }]],
+
   use: {
-    baseURL,
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    testIdAttribute: 'data-testid',
   },
-  /*
-   * Start a dev server before the run once you have an app to test:
-   * webServer: {
-   *   command: 'npx nx serve <your-app>',
-   *   url: 'http://localhost:3000',
-   *   reuseExistingServer: !process.env.CI,
-   *   cwd: workspaceRoot, // import { workspaceRoot } from '@nx/devkit';
-   * },
-   */
+
+  // Boot BOTH servers before tests. cwd is the repo root so the commands are
+  // tooling-agnostic (work on the Mac host, in the devcontainer, and in CI —
+  // independent of the Nx CLI). Playwright waits for each `url` to answer 2xx/3xx.
+  webServer: [
+    {
+      command: 'npm run start --workspace=@org/api',
+      url: `${env.apiURL}/health`,
+      cwd: '../..',
+      timeout: 120_000,
+      reuseExistingServer: !env.isCI,
+    },
+    {
+      command: 'npm run serve --workspace=@org/web',
+      url: env.baseURL,
+      cwd: '../..',
+      timeout: 120_000,
+      reuseExistingServer: !env.isCI,
+    },
+  ],
+
   projects: [
+    // Gate the suite on a healthy stack; api + ui depend on it.
+    { name: 'setup', testMatch: /global\.setup\.ts/ },
+
+    // Pure API tests — no browser. baseURL points at the Hono API.
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'api',
+      testMatch: 'tests/api/**/*.spec.ts',
+      use: { baseURL: env.apiURL },
+      dependencies: ['setup'],
     },
 
+    // UI tests against the SPA in Chromium (chosen browser scope).
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'ui-chromium',
+      testMatch: 'tests/ui/**/*.spec.ts',
+      use: { ...devices['Desktop Chrome'], baseURL: env.baseURL },
+      dependencies: ['setup'],
     },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    // Uncomment for mobile browsers support
-    /* {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    }, */
-
-    // Uncomment for branded browsers
-    /* {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    } */
   ],
 });

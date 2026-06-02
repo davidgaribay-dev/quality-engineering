@@ -13,17 +13,24 @@
 
   // noVNC desktop (lets you run headed tests, Inspector, codegen in the browser at :6080).
   // Fully-qualified ID is the canonical form of the docs' "desktop-lite" shorthand.
+  // docker-in-docker runs a nested Docker daemon inside the container so you can
+  // `docker compose up --build` the app images here, isolated from the host daemon.
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "webPort": "6080",
       "vncPort": "5901",
       "password": "vscode"
-    }
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
 
-  "forwardPorts": [6080],
+  // 6080 = noVNC desktop; 4200/3333 = the dockerized web + API so the stack is
+  // reachable from the host browser when you run docker compose inside.
+  "forwardPorts": [6080, 4200, 3333],
   "portsAttributes": {
-    "6080": { "label": "noVNC desktop", "onAutoForward": "notify" }
+    "6080": { "label": "noVNC desktop", "onAutoForward": "notify" },
+    "4200": { "label": "web (SPA / Caddy)", "onAutoForward": "silent" },
+    "3333": { "label": "api (Hono)", "onAutoForward": "silent" }
   },
 
   // Team consistency: same extensions for everyone. Mirrors .vscode/extensions.json.

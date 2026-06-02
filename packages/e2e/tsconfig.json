@@ -3,7 +3,12 @@
   "compilerOptions": {
     "allowJs": true,
     "outDir": "out-tsc/playwright",
-    "sourceMap": false
+    "sourceMap": false,
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@org/contracts": ["../contracts/src/index.ts"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -15,5 +20,5 @@
     "src/**/*.test.js",
     "src/**/*.d.ts"
   ],
-  "exclude": ["out-tsc", "test-output"]
+  "exclude": ["out-tsc", "test-output", "node_modules"]
 }

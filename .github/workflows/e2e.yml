@@ -1,0 +1,100 @@
+name: E2E
+
+# Smoke on PRs (fast gate); full, sharded regression on pushes to main.
+# Playwright's webServer config starts the API (:3333) + web (:4200) itself,
+# so there's no separate "start servers" step.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: packages/e2e
+
+jobs:
+  smoke:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        working-directory: .
+      - name: Install Playwright (chromium)
+        run: npx playwright install --with-deps chromium
+      - name: Run @smoke tests
+        run: npx playwright test --grep @smoke
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: smoke-report
+          path: |
+            packages/e2e/playwright-report
+            packages/e2e/test-output
+          retention-days: 7
+
+  regression:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        working-directory: .
+      - name: Install Playwright (chromium)
+        run: npx playwright install --with-deps chromium
+      - name: Run @regression tests (sharded)
+        run: npx playwright test --grep @regression --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: Upload blob report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shardIndex }}
+          path: packages/e2e/blob-report
+          retention-days: 1
+
+  merge-reports:
+    # Merge the sharded blob reports into a single HTML report.
+    if: ${{ !cancelled() && github.event_name == 'push' }}
+    needs: [regression]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+        working-directory: .
+      - name: Download blob reports
+        uses: actions/download-artifact@v5
+        with:
+          path: packages/e2e/all-blob-reports
+          pattern: blob-report-*
+          merge-multiple: true
+      - name: Merge into HTML report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: packages/e2e/playwright-report
+          retention-days: 14

@@ -1,0 +1,26 @@
+# Runs the whole pet-adoption stack in containers.
+#   docker compose up --build   →   open http://localhost:4200
+# Caddy (web) reverse-proxies /api and /images to the api service.
+services:
+  api:
+    build:
+      context: .
+      dockerfile: packages/api/Dockerfile
+    ports:
+      - "3333:3333"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3333/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: packages/web/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      api:
+        condition: service_healthy

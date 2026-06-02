@@ -1,0 +1,18 @@
+# Keep the build context small and reproducible.
+node_modules
+**/node_modules
+**/dist
+**/out-tsc
+**/test-output
+**/test-results
+**/playwright-report
+**/blob-report
+**/logs
+.git
+.github
+.nx
+.idea
+.vscode
+.devcontainer
+**/.DS_Store
+**/*.log

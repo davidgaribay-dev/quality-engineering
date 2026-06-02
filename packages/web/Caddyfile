@@ -1,0 +1,23 @@
+# Caddy serves the built SPA and reverse-proxies API + image requests to the
+# `api` service — the production equivalent of the dev-time Vite proxy, so the
+# app keeps calling /api and /images same-origin. `api` is the docker-compose
+# service name (its DNS is resolved on the compose network).
+:80 {
+	encode gzip
+
+	handle /api/* {
+		reverse_proxy api:3333
+	}
+
+	handle /images/* {
+		reverse_proxy api:3333
+	}
+
+	# SPA fallback: serve static files, falling back to index.html for the
+	# client-side routes (/pets, /pets/:id, /pets/:id/adopt).
+	handle {
+		root * /usr/share/caddy
+		try_files {path} /index.html
+		file_server
+	}
+}
