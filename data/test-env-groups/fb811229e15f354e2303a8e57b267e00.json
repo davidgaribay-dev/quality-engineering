@@ -1,0 +1,1 @@
+{"id":"fb811229e15f354e2303a8e57b267e00","fullName":"tests/api/pets.api.spec.ts:12:5","name":"GET /api/pets?species=dog returns only dogs","status":"passed","testResultsByEnv":{"default":"ecb665f3e1825516c792d5d4f57fb128"}}

@@ -1,0 +1,1 @@
+{"id":"45881c92b6c5612c9587342f482a04ac","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: name too short","status":"passed","testResultsByEnv":{"default":"8812a769c4b3d6d0a493425314b0e365"}}

@@ -1,0 +1,3 @@
+02:38:32.522 info: [filtering by dog shows only dogs] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
+02:38:33.041 info: [filtering by dog shows only dogs] filter pets by: dog
+02:38:33.749 info: [filtering by dog shows only dogs] ■ test finished: passed {"durationMs":803}

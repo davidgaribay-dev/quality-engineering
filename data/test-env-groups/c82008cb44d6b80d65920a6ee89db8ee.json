@@ -1,0 +1,1 @@
+{"id":"c82008cb44d6b80d65920a6ee89db8ee","fullName":"tests/api/pets.api.spec.ts:12:5","name":"GET /api/pets?species=cat returns only cats","status":"passed","testResultsByEnv":{"default":"6e417d51e1f0deadeb0c8a54a0b20e2b"}}

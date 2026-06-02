@@ -1,0 +1,1 @@
+{"id":"19b843bc8cc8961c37932e6c8b5f233e","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: malformed email","status":"passed","testResultsByEnv":{"default":"ceda7766dec2cf4a03354a05cce008ed"}}

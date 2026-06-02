@@ -1,0 +1,2 @@
+02:38:28.342 info: [shows an error when name too short] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
+02:38:31.526 info: [shows an error when name too short] ■ test finished: passed {"durationMs":924}

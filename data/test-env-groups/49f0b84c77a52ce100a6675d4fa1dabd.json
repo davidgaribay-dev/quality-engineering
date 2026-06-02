@@ -1,0 +1,1 @@
+{"id":"49f0b84c77a52ce100a6675d4fa1dabd","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: missing email","status":"passed","testResultsByEnv":{"default":"7454e02f579ab919ad8f058cd1840b58"}}

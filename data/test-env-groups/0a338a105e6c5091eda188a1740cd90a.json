@@ -1,0 +1,1 @@
+{"id":"0a338a105e6c5091eda188a1740cd90a","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: empty body","status":"passed","testResultsByEnv":{"default":"81aff8357baa1267b881d5aa6324edea"}}
