@@ -16,9 +16,20 @@ export default defineConfig({
   retries: env.isCI ? 2 : 0,
 
   // CI: machine-readable + mergeable; local: fast list + browsable HTML.
+  // Allure runs in both: it emits raw `allure-results` that the `allure` CLI
+  // turns into the historical "Quality Engineering" report (see allurerc.mjs).
   reporter: env.isCI
-    ? [['blob'], ['junit', { outputFile: 'test-output/junit.xml' }], ['github']]
-    : [['list'], ['html', { open: 'never' }]],
+    ? [
+        ['blob'],
+        ['junit', { outputFile: 'test-output/junit.xml' }],
+        ['github'],
+        ['allure-playwright', { resultsDir: 'allure-results' }],
+      ]
+    : [
+        ['list'],
+        ['html', { open: 'never' }],
+        ['allure-playwright', { resultsDir: 'allure-results' }],
+      ],
 
   use: {
     trace: 'on-first-retry',

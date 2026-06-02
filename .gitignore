@@ -56,3 +56,8 @@ blob-report
 all-blob-reports
 packages/e2e/logs
 .env
+
+# Allure 3 artifacts (history.jsonl lives on the gh-pages branch, not here)
+allure-results
+allure-report
+history.jsonl

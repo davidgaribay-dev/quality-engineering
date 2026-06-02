@@ -13,12 +13,18 @@
     "e2e:api": "playwright test --project=api",
     "e2e:ui": "playwright test --project=ui-chromium",
     "e2e:headed": "playwright test --project=ui-chromium --headed",
-    "e2e:report": "playwright show-report"
+    "e2e:report": "playwright show-report",
+    "allure:generate": "allure generate ./allure-results",
+    "allure:open": "allure open ./allure-report"
   },
   "dependencies": {
     "@org/contracts": "*",
     "@faker-js/faker": "^9.4.0",
     "winston": "^3.17.0",
     "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "allure": "^3.9.0",
+    "allure-playwright": "^3.9.0"
   }
 }
