@@ -27,10 +27,10 @@ export default defineConfig({
       options: {
         reportName: 'Quality Engineering',
         theme: 'auto', // light | dark | auto
+        logo: './branding/logo.svg', // header branding
         groupBy: ['parentSuite', 'suite', 'subSuite'],
         stepTreeExpansion: 'expand_failed_only',
-        // logo: './branding/logo.svg',  // drop a logo here to brand the header
-        // ci: { type: 'github' },        // render CI run/commit links
+        defaultSortBy: 'order,asc',
       },
     },
   },
