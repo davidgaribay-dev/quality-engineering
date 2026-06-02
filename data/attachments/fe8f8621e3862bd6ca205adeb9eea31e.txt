@@ -1,2 +1,0 @@
-02:44:31.003 info: [POST a more-info request is received] ▶ test started {"project":"api","tags":["@api","@regression"]}
-02:44:31.059 info: [POST a more-info request is received] ■ test finished: passed {"durationMs":54}

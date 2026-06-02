@@ -1,0 +1,3 @@
+02:48:21.803 info: [filtering by cat shows only cats] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
+02:48:22.288 info: [filtering by cat shows only cats] filter pets by: cat
+02:48:22.999 info: [filtering by cat shows only cats] ■ test finished: passed {"durationMs":815}

@@ -1,1 +1,1 @@
-{"id":"49f0b84c77a52ce100a6675d4fa1dabd","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: missing email","status":"passed","testResultsByEnv":{"default":"0d55cfa647e1ea733be7d8ef2527e5df"}}
+{"id":"49f0b84c77a52ce100a6675d4fa1dabd","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: missing email","status":"passed","testResultsByEnv":{"default":"6d5679c6a42c04cd7a0b85e228ff6afb"}}

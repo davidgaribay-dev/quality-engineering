@@ -1,0 +1,2 @@
+02:48:28.948 info: [shows an error when message too long] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
+02:48:29.870 info: [shows an error when message too long] ■ test finished: passed {"durationMs":678}

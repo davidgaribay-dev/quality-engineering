@@ -1,0 +1,2 @@
+02:48:23.805 info: [POST rejects invalid body: hasOtherPets wrong type] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:23.822 info: [POST rejects invalid body: hasOtherPets wrong type] ■ test finished: passed {"durationMs":14}

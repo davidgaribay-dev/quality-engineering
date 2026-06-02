@@ -1,0 +1,2 @@
+02:48:23.735 info: [POST rejects invalid body: name too short] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:23.782 info: [POST rejects invalid body: name too short] ■ test finished: passed {"durationMs":46}

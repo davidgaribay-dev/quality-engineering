@@ -1,4 +1,0 @@
-02:44:32.121 info: [returning to "All pets" restores the full catalog] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
-02:44:32.500 info: [returning to "All pets" restores the full catalog] filter pets by: dog
-02:44:32.709 info: [returning to "All pets" restores the full catalog] filter pets by: all
-02:44:33.090 info: [returning to "All pets" restores the full catalog] ■ test finished: passed {"durationMs":721}

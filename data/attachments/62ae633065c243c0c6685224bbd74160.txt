@@ -1,0 +1,2 @@
+02:48:28.998 info: [a fully valid form has no field errors] ▶ test started {"project":"ui-chromium","tags":["@regression","@smoke"]}
+02:48:29.931 info: [a fully valid form has no field errors] ■ test finished: passed {"durationMs":768}

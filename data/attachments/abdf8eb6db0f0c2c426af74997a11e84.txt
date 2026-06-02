@@ -1,0 +1,2 @@
+02:48:32.581 info: [POST to an unknown pet 404s] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:32.616 info: [POST to an unknown pet 404s] ■ test finished: passed {"durationMs":33}

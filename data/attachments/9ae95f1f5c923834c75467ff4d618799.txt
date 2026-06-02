@@ -1,2 +1,0 @@
-02:44:31.080 info: [shows the full catalog by default] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
-02:44:31.876 info: [shows the full catalog by default] ■ test finished: passed {"durationMs":402}

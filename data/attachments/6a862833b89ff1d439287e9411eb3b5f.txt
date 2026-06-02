@@ -1,0 +1,2 @@
+02:48:23.827 info: [GET /api/pets?species=dog returns only dogs] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:23.840 info: [GET /api/pets?species=dog returns only dogs] ■ test finished: passed {"durationMs":11}

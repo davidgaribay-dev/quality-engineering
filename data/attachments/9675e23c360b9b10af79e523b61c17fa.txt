@@ -1,0 +1,2 @@
+02:48:27.991 info: [shows an error when phone non-numeric] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
+02:48:28.976 info: [shows an error when phone non-numeric] ■ test finished: passed {"durationMs":768}

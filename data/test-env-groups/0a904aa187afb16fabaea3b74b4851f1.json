@@ -1,1 +1,1 @@
-{"id":"0a904aa187afb16fabaea3b74b4851f1","fullName":"tests/ui/inquiry-validation.spec.ts:11:5","name":"shows an error when email malformed","status":"passed","testResultsByEnv":{"default":"2c02108c0905b4531b6b59cc15f20ef0"}}
+{"id":"0a904aa187afb16fabaea3b74b4851f1","fullName":"tests/ui/inquiry-validation.spec.ts:11:5","name":"shows an error when email malformed","status":"passed","testResultsByEnv":{"default":"c8293404d3aa147aa3f084d1d7babd8a"}}

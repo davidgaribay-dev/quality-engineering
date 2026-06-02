@@ -1,0 +1,2 @@
+02:48:23.743 info: [POST rejects invalid body: unknown requestType] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:23.790 info: [POST rejects invalid body: unknown requestType] ■ test finished: passed {"durationMs":45}

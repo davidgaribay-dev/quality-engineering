@@ -1,2 +1,0 @@
-02:44:26.231 info: [shows an error when email malformed] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
-02:44:27.195 info: [shows an error when email malformed] ■ test finished: passed {"durationMs":696}

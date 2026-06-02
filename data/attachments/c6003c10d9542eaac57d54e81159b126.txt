@@ -1,0 +1,2 @@
+02:48:32.643 info: [POST rejects invalid body: missing email] ▶ test started {"project":"api","tags":["@api","@regression"]}
+02:48:32.653 info: [POST rejects invalid body: missing email] ■ test finished: passed {"durationMs":8}

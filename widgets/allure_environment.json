@@ -1,1 +1,1 @@
-[]
+[{"name":"Node.js","values":["v24.16.0"]},{"name":"OS","values":["linux x64"]},{"name":"Base URL","values":["http://localhost:4200"]},{"name":"API URL","values":["http://localhost:3333"]},{"name":"Branch","values":["main"]},{"name":"Commit","values":["9e0b1d6"]},{"name":"CI run","values":["#5"]}]
