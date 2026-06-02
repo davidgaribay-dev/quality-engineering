@@ -1,3 +1,0 @@
-02:38:29.253 info: environment {"baseURL":"http://localhost:4200","apiURL":"http://localhost:3333","ci":true}
-02:38:29.284 info: API is healthy
-02:38:29.294 info: web SPA is reachable

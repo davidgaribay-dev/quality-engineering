@@ -1,3 +1,0 @@
-02:38:30.174 info: [submit an adoption request from a pet detail page] ▶ test started {"project":"ui-chromium","tags":["@regression","@smoke"]}
-02:38:31.966 info: [submit an adoption request from a pet detail page] submitting adoption inquiry {"email":"waylon35@yahoo.com"}
-02:38:32.430 info: [submit an adoption request from a pet detail page] ■ test finished: passed {"durationMs":967}

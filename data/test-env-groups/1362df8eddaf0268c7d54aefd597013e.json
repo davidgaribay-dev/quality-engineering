@@ -1,1 +1,1 @@
-{"id":"1362df8eddaf0268c7d54aefd597013e","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: unknown requestType","status":"passed","testResultsByEnv":{"default":"69f58256f38ce29c63063738a981ca8b"}}
+{"id":"1362df8eddaf0268c7d54aefd597013e","fullName":"tests/api/inquiries.api.spec.ts:32:5","name":"POST rejects invalid body: unknown requestType","status":"passed","testResultsByEnv":{"default":"ffc92612e5840ae0c7afceb1dfc5642a"}}

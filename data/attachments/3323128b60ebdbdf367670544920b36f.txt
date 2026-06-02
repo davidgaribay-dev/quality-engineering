@@ -1,2 +1,0 @@
-02:38:30.082 info: [GET /api/pets/:id 404s for an unknown id] ▶ test started {"project":"api","tags":["@api","@regression"]}
-02:38:30.108 info: [GET /api/pets/:id 404s for an unknown id] ■ test finished: passed {"durationMs":9}

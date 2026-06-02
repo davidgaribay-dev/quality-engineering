@@ -1,2 +1,0 @@
-02:38:30.191 info: [submit a "request more info" inquiry for a pending pet] ▶ test started {"project":"ui-chromium","tags":["@regression"]}
-02:38:32.490 info: [submit a "request more info" inquiry for a pending pet] ■ test finished: passed {"durationMs":1057}

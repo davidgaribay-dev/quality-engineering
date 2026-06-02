@@ -1,2 +1,0 @@
-02:38:27.718 info: [POST rejects invalid body: null body] ▶ test started {"project":"api","tags":["@api","@regression"]}
-02:38:27.732 info: [POST rejects invalid body: null body] ■ test finished: passed {"durationMs":11}

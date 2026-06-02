@@ -1,2 +1,0 @@
-02:38:27.746 info: [POST rejects invalid body: malformed email] ▶ test started {"project":"api","tags":["@api","@regression"]}
-02:38:27.761 info: [POST rejects invalid body: malformed email] ■ test finished: passed {"durationMs":12}
